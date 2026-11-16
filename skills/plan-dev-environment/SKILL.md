@@ -9,7 +9,7 @@ description: 계획 모드(Plan)에서 앱·사이트·기능·리팩터링 같�
 
 참고 문서(필요한 것만 읽는다):
 - [plan-and-verify.md](references/plan-and-verify.md): 규모별 절차, 필요성 사다리·참고 사례, 계획서 필수 칸, 구현·완료·리뷰·멈춤 기준.
-- [release-gates.md](references/release-gates.md): 병합, 실제 DB 엔진, 배포, 운영 전환, 외부 비용, 묻기 전 확인.
+- [release-gates.md](references/release-gates.md): 통합 방식(PR / main 직접), 병합, 실제 DB 엔진, 배포, 운영 전환, 외부 비용, 묻기 전 확인.
 - [team-lead.md](references/team-lead.md): 여러 세션·에이전트 운영(역할·보고·검증 층·위임·기록).
 - [this-machine.example.md](references/this-machine.example.md), [project.example.md](references/project.example.md): 내 PC 도구·함정, 프로젝트 위치 안내를 적어 두는 양식. 복사해 `this-machine.md`·`project-<이름>.md`로 채운다.
 
@@ -28,7 +28,7 @@ description: 계획 모드(Plan)에서 앱·사이트·기능·리팩터링 같�
 6. 규모를 정하고(작음·중간·큼) 필요성 사다리와 요구 확인을 거친 뒤 계획서 필수 칸을 채운다([plan-and-verify.md](references/plan-and-verify.md) 0~3절). 작은 일은 가볍게 한다.
    계획서에 "0단계: 환경 준비"를 넣는다: 확인한 실행 명령, 빠진 도구·의존성, 워크트리 분담안(필요할 때만), 검증 명령, 예상 실패(외부 설정 누락 등).
 7. 새 프로젝트·새 기능이면 확정 전에 참고 사례(내 템플릿·이전 저장소·검증해 둔 스킬 → 공개 예제·오픈소스 → 비슷한 서비스 구조)로 계획을 다듬고, 쓰기로 한 것은 고정 버전으로 0단계 설치 목록에 넣는다([plan-and-verify.md](references/plan-and-verify.md) 1절).
-8. 운영 반영이 있으면 마지막 단계로 병합·배포 관문을 넣고, 설정·스키마 변경이면 바뀌는 값이 걸리는 해시·서명·동의를 코드로 계산해 적는다([release-gates.md](references/release-gates.md)).
+8. 통합 방식(PR / main 직접)을 저장소 성격으로 정해 계획서에 적는다(main 병합이 곧 배포·조직 저장소는 PR, 혼자 쓰는 개인 저장소는 main 직접 가능, [release-gates.md](references/release-gates.md) 0절). 운영 반영이 있으면 마지막 단계로 병합·배포 관문을 넣고, 설정·스키마 변경이면 바뀌는 값이 걸리는 해시·서명·동의를 코드로 계산해 적는다([release-gates.md](references/release-gates.md)).
 
 ## 2. 계획에 맞춘 분담과 워크트리 (실행 단계)
 - 단일 작업이면 워크트리 하나로 충분하다. 기능 경계·수정 파일·검증 범위가 독립적이고 병렬의 이점이 있을 때만 나눈다. 조사·설명만 하는 역할에는 워크트리를 만들지 않는다. 각 단위에 담당·의존 작업·완료 조건을 적고 통합 담당은 한 명(메인)이다.
